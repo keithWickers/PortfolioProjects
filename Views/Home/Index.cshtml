@@ -1,0 +1,42 @@
+﻿@model List<GroceryList.Models.Grocery>
+@{
+    ViewData["Title"] = "My Grocerys";
+}
+
+<h2>Grocery List</h2>
+
+<a asp-controller="Grocery" asp-action="Add">Creat New</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>UnitPrice</th>
+            <th>Category</th>
+            <th>Action</th>
+            <th>  </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var Grocery in Model)
+        {
+        <tr>
+            <td>@Grocery.Id</td>
+            <td>@Grocery.Name</td>
+            <td>@Grocery.UnitPrice</td>
+            <td>@Grocery.Category.Name</td>
+
+
+            <td>
+                <a asp-controller="Grocery" asp-action="Edit" asp-route-id="@Grocery.Id">Edit</a>
+                <a asp-controller="Grocery" asp-action="Delete" asp-route-id="@Grocery.Id">Delete</a>
+            </td>
+        </tr>
+
+        }
+    </tbody>
+</table>
+
+
+
